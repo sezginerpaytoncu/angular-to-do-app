@@ -1,0 +1,16 @@
+ul li{
+    list-style: none;
+}
+.card-body>a{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: #212529;
+}
+img{
+display: flex;
+align-items: center;
+vertical-align: center;
+flex-wrap: wrap;
+}
