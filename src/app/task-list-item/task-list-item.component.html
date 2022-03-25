@@ -1,0 +1,31 @@
+<div class="card mb-3 mx-auto" style="max-width: 50rem;">
+  <div class="row g-0">
+      <div class="col-sm-12 col-md-4 my-auto d-flex">
+          <div class="mx-1 my-auto">
+              <input *ngIf="task.completed" type="checkbox" (change)="updateTaskStatus(task)" checked>
+              <input *ngIf="!task.completed" type="checkbox" (change)="updateTaskStatus(task)">
+          </div>
+          <img class="img-fluid rounded w-50 mx-auto" [src]="task.media" onerror="this.src='/favicon.ico'" style="max-width: 15rem;" alt="task image">
+      </div>
+      <div class="col-sm-12 col-md-8">
+          <div class="card-body">
+              <div class="d-flex justify-content-end">
+                  <i routerLink="/tasks/detail/{{task.id}}" class="mx-1 fa-solid fa-pen-to-square"></i>
+                  <i class="fa-solid fa-trash-can" (click)="deleteTask(task)"></i>
+              </div>
+              <a [routerLink]="['detail', task.id]">Task {{task.id}}</a>
+              <p class="card-text">
+                  <span *ngIf="!task.completed">{{task.description}}</span>
+                  <span *ngIf="task.completed"><s>{{task.description}}</s></span>
+              </p>
+              <small class="text-muted card-text">Last updated: {{task.updatedAt | date:'short' }}</small>
+              <br>
+              <small class="text-muted card-text">Created updated: {{task.createdAt | date:'short' }}</small>
+              <p class="card-text">
+                  <small *ngIf="task.completed">Status: completed </small>
+                  <small *ngIf="!task.completed">Status: in progress </small>
+              </p>
+          </div>
+      </div>
+  </div>
+</div>

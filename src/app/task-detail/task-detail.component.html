@@ -1,36 +1,4 @@
-<div *ngIf="isEditFormEnabled" class="container">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="col-sm-12 col-md-8 col-lg-6 mx-auto my-5 p-3 border rounded">
-        <h2>Edit Task</h2>
-        <div class="mb-3">
-            <label for="taskDescription" class="form-label">Task Description</label>
-            <input 
-                required
-                type="text"
-                class="form-control"
-                id="taskDescription"
-                name="taskDescription"
-                ngModel
-                ng-pattern=""
-                >
-            <div style="font-size: 0.8rem" class="alert alert-warning h-75" *ngIf="!f.valid && f.touched">Description is required.</div>
-        </div>
-        <div class="mb-3">
-            <label for="inputGroupFile02" class="form-label">Task Image</label>
-            <input 
-                type="file" 
-                class="form-control" 
-                id="inputGroupFile02"
-                name="taskMedia"
-                ngModel
-                #inputMedia
-                accept="image/png, image/jpeg, image/jpg"
-                (change)="fileChangeEvent($event)">
-            <div style="font-size: 0.8rem" class="alert alert-warning h-75" *ngIf="f.value.taskMedia && !isImageProper">Files must be less than 500 KB. Allowed file types: png jpg jpeg</div>
-        </div>
-        <button type="submit" class="btn btn-primary">Update Task</button>
-    </form>
-</div>
-
+<lib-task-form *ngIf="isEditFormEnabled" [task]="task"></lib-task-form>
 
 <div class="container">
     <div class="d-flex justify-content-end mb-5">

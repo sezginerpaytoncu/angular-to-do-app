@@ -1,19 +1,38 @@
-<lib-task-form *ngIf="isNewTaskFormEnabled"></lib-task-form>
+<!-- <lib-task-form *ngIf="isNewTaskFormEnabled"></lib-task-form> -->
+<lib-task-form *ngIf="isNewTaskFormEnabled">
+</lib-task-form>
 
 <div class="container">
     <div class="d-flex justify-content-end mb-5">
         <button *ngIf="!isNewTaskFormEnabled" class="btn btn-primary " (click)="toggleForm()">Add Task</button>
         <button *ngIf="isNewTaskFormEnabled" class="btn btn-danger" (click)="toggleForm()">Cancel</button>
     </div>
-    <div *ngFor="let task of taskList$ | async">
+
+    <app-task-list-item
+      *ngFor="let task of taskList$ | async"
+      [task]="task"
+      (updateEvent)="updateTaskStatus($event)"
+      (deleteEvent)="deleteTask($event)"
+    >
+    </app-task-list-item>
+</div>
+
+
+
+
+
+
+
+    <!-- <div *ngFor="let task of taskList$ | async">
         <div class="card mb-3 mx-auto" style="max-width: 50rem;">
-            <div class="row g-0">               
-                <div class="col-sm-12 col-md-4 my-auto d-flex">
+            <div class="row g-0">
+                < class="col-sm-12 col-md-4 my-auto d-flex">
                     <div class="mx-1 my-auto">
                         <input *ngIf="task.completed" type="checkbox" (change)="updateTaskStatus(task)" checked>
                         <input *ngIf="!task.completed" type="checkbox" (change)="updateTaskStatus(task)">
                     </div>
-                    <img class="img-fluid rounded w-50 mx-auto" [src]="task.media || '/favicon.ico'" style="max-width: 15rem;" alt="task image">
+                    <!-- <img class="img-fluid rounded w-50 mx-auto" [src]="task.media || '/favicon.ico'" style="max-width: 15rem;" alt="task image"> --
+                    <img class="img-fluid rounded w-50 mx-auto" [src]="task.media" onerror="this.src='/favicon.ico'" style="max-width: 15rem;" alt="task image">
                 </div>
                 <div class="col-sm-12 col-md-8">
                     <div class="card-body">
@@ -21,8 +40,7 @@
                             <i routerLink="/detail/{{task.id}}" class="mx-1 fa-solid fa-pen-to-square"></i>
                             <i class="fa-solid fa-trash-can" (click)="deleteTask(task)"></i>
                         </div>
-                        <a routerLink="/detail/{{task.id}}">Task {{task.id}}</a>
-                        <!-- <h5 class="card-title">Task {{task.id}}</h5> -->
+                        <a [routerLink]="['detail', task.id]">Task {{task.id}}</a>
                         <p class="card-text">
                             <span *ngIf="!task.completed">{{task.description}}</span>
                             <span *ngIf="task.completed"><s>{{task.description}}</s></span>
@@ -38,5 +56,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+
+    </div>-->

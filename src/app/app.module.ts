@@ -12,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { SezginModule } from 'sezgin';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TasksComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    TaskListItemComponent
   ],
   imports: [
     BrowserModule,
