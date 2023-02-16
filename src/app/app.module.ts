@@ -20,16 +20,17 @@ import { TaskListItemComponent } from './task-list-item/task-list-item.component
     HeaderComponent,
     TasksComponent,
     TaskDetailComponent,
-    TaskListItemComponent
+    TaskListItemComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     SezginModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
